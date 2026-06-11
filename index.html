@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="6 qui prend! - Jeu de cartes gratuit en ligne" />
+  <meta name="theme-color" content="#0f0f23" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>🐮</text></svg>">
+  <title>🐮 6 qui prend ! - Jeu de Cartes</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+<div id="app">
+
+  <!-- SETUP SCREEN -->
+  <div id="screen-setup" class="card">
+    <div class="header">
+      <span class="emoji">🐮</span>
+      <h1>6 qui prend !</h1>
+      <p>Configurez votre partie</p>
+    </div>
+
+    <div class="section">
+      <label class="section-label">Limite de points</label>
+      <p class="hint">La partie s'arrête quand un joueur atteint cette limite</p>
+      <div class="pill-row">
+        <button class="pill active" data-limit="33">33 pts</button>
+        <button class="pill" data-limit="66">66 pts</button>
+        <button class="pill" data-limit="100">100 pts</button>
+        <input class="custom-input" type="number" id="limit-input" min="1" value="33" />
+      </div>
+    </div>
+
+    <div class="section">
+      <label class="section-label">Nombre de joueurs</label>
+      <div class="count-row" id="count-row"></div>
+    </div>
+
+    <div class="section">
+      <label class="section-label">Noms des joueurs</label>
+      <div class="names-grid" id="names-grid"></div>
+    </div>
+
+    <div class="toolbar">
+      <button class="btn-icon" id="btn-settings" title="Paramètres">⚙️</button>
+    </div>
+
+    <button class="btn-primary" id="btn-start">Commencer la partie →</button>
+  </div>
+
+  <!-- GAME SCREEN -->
+  <div id="screen-game" class="card hidden">
+    <div class="game-header">
+      <span class="round-badge" id="round-label">Manche 1</span>
+      <span class="limit-badge" id="limit-label"></span>
+    </div>
+
+    <div class="stats-grid" id="stats-grid"></div>
+
+    <div class="scoreboard" id="scoreboard"></div>
+
+    <div class="section">
+      <label class="section-label">Points gagnés cette manche</label>
+      <div class="round-inputs" id="round-inputs"></div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn-undo" id="btn-undo" disabled>← Annuler</button>
+      <button class="btn-validate" id="btn-validate">Valider ✓</button>
+    </div>
+
+    <div class="history-section">
+      <details>
+        <summary>📊 Historique des manches</summary>
+        <table>
+          <thead id="history-head"></thead>
+          <tbody id="history-body"></tbody>
+        </table>
+      </details>
+    </div>
+
+    <div class="toolbar">
+      <button class="btn-icon" id="btn-export" title="Exporter">📥</button>
+      <button class="btn-icon" id="btn-reset-game" title="Nouvelle partie">🔄</button>
+    </div>
+  </div>
+
+  <!-- WIN SCREEN -->
+  <div id="screen-win" class="card hidden">
+    <div class="win-header">
+      <div class="win-emoji">🏆</div>
+      <h2 class="win-title" id="win-title"></h2>
+      <p class="win-sub" id="win-sub"></p>
+    </div>
+
+    <div class="stats-grid" id="win-stats"></div>
+
+    <div class="final-scores" id="final-scores"></div>
+
+    <button class="btn-primary" id="btn-new-game">Nouvelle partie →</button>
+  </div>
+
+  <!-- MODAL -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-title" id="modal-title"></div>
+      <div class="modal-text" id="modal-text"></div>
+      <div class="modal-buttons">
+        <button class="modal-btn-cancel" id="modal-cancel">Annuler</button>
+        <button class="modal-btn-confirm" id="modal-confirm">Confirmer</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div id="toast" class="toast"></div>
+
+</div>
+
+<script src="js/constants.js"></script>
+<script src="js/state.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/game.js"></script>
+<script src="js/events.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
